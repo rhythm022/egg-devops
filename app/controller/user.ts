@@ -15,3 +15,5 @@ export default class UserController extends Controller {
       this.ctx.body = userToken;
     }
 }
+
+// http://192.168.56.119/oauth/authorize?client_id=137b236596d6001528762603d17bc782999120a7070333478683abc4522048ed&redirect_uri=http://127.0.0.1:7002/user/getTokenByApp&response_type=code
