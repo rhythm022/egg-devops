@@ -1,8 +1,8 @@
-import { Controller } from 'egg';
+import  BaseController from './base';
 import { Get, Prefix } from 'egg-shell-decorators';
 
 @Prefix('user')
-export default class UserController extends Controller {
+export default class UserController extends BaseController {
     @Get('/getTokenByApp')
     public async getTokenByApplications({
       request: {

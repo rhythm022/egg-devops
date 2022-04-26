@@ -1,8 +1,8 @@
-import { Controller } from "egg";
+import  BaseController from './base';
 import { Post, Prefix } from "egg-shell-decorators";
 
 @Prefix("project")
-export default class ProjectController extends Controller {
+export default class ProjectController extends BaseController {
   @Post("/getProjectList")
   public async getProjectList() {
     const { ctx } = this;

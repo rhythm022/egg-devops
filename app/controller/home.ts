@@ -1,8 +1,8 @@
-import { Controller } from 'egg';
+import  BaseController from './base';
 import { Get, Prefix } from 'egg-shell-decorators';
 
 @Prefix('/home')
-export default class HomeController extends Controller {
+export default class HomeController extends BaseController {
 
   @Get('/')
   public async index() {
