@@ -12,7 +12,29 @@ export default class UserController extends BaseController {
       const { ctx } = this;
       // gitLab 获取 access_token
       const userToken = await ctx.service.user.getTokenByApplications({ code });
-      this.ctx.body = userToken;
+      console.log(userToken)
+      // gitlab 获取用户信息
+      const userInfo = await ctx.service.user.getUserInfo({
+        accessToken: userToken.access_token,
+      });
+      
+      
+      // 添加用户数据本地落库，此段代码为用户落库
+      ctx.service.user.saveUser({
+        userInfo,
+      });
+
+      // // 将用户信息及 token 使用 jwt 注册
+      // const token = app.jwt.sign(
+      //   {
+      //     userToken,
+      //     userInfo,
+      //   },
+      //   app.config.jwt.secret
+      // );
+      
+      // ctx.set({ authorization: token }); // 设置 headers
+      this.success(userInfo);
     }
 }
 
