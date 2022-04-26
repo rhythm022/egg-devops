@@ -14,3 +14,18 @@ export default class HomeController extends BaseController {
     ctx.body = `Hello ${ctx.helper.util.hello()}!`;
   }
 }
+
+// @Prefix("robot")
+// export default class ProjectController extends BaseController {
+//   @Post("/ding")
+//   public async getProjectList({
+//     request: {
+//       body: { params },
+//     },
+//   }) {
+//     const { ctx } = this;
+//     const { content } = params;
+//     await ctx.helper.robot.ding.text({ content });
+//     this.success({});
+//   }
+// }
