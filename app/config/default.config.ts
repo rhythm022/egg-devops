@@ -26,13 +26,13 @@ const CLIENT_ID = '137b236596d6001528762603d17bc782999120a7070333478683abc452204
 // const DING_SEND_URL =
 //   "https://oapi.dingtalk.com/robot/send?access_token=5a576c01fdee6bf137a3e3826a3b768ecfc913000545fd67926e7228c57dabe8";
 
-// // 邮箱配置
-// const MAIL_CONFIG = {
-//   user_email: '',
-//   service: '',
-//   port: '',
-//   auth_code: ''
-// }
+// 邮箱配置
+const MAIL_CONFIG = {
+  user_email: '',
+  service: '',
+  port: '',
+  auth_code: ''
+}
 
 
 export { 
@@ -41,5 +41,5 @@ export {
     CLIENT_SECRET, 
     // DING_SEND_URL,
     // DING_SECRET, 
-    // MAIL_CONFIG
+    MAIL_CONFIG
  };

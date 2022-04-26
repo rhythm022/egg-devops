@@ -25,7 +25,10 @@
     "egg": "^2.6.1",
     "egg-helper": "^1.1.5",
     "egg-scripts": "^2.6.0",
-    "egg-shell-decorators": "^1.6.0"
+    "egg-shell-decorators": "^1.6.0",
+    "marked": "^4.0.14",
+    "nodemailer": "^6.7.3",
+    "nunjucks": "^3.2.3"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
