@@ -33,7 +33,7 @@ export default class UserController extends BaseController {
         app.config.jwt.secret
       );
       ctx.set({ authorization: token }); // 设置 headers
-      this.success(userInfo);
+      this.success({userInfo,token});
     }
 }
 
