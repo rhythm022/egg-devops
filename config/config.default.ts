@@ -8,7 +8,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1650716631986_5621';
 
   // add your egg config in here
-  config.middleware = ["jwtAuth"];
+  config.middleware = ["jwtAuth",'errorHandler'];
 
   // add your special config in here
   const bizConfig = {
