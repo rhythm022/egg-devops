@@ -8,7 +8,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1650716631986_5621';
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = ["jwtAuth"];
 
   // add your special config in here
   const bizConfig = {
@@ -25,6 +25,23 @@ export default (appInfo: EggAppInfo) => {
     username: "sam",
     password: "111111",
   };
+
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+    // domainWhiteList: '*'  // 白名单
+  };
+  config.cors = {
+    origin: (ctx) => ctx.get("origin"),
+    credentials: true,
+    allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH",
+  };
+  config.jwt = {
+    secret: "123456", // 自定义 token 的加密条件字符串
+  };
+
+  config.jwtAuth = {};
 
   // the return config will combines to EggAppConfig
   return {

@@ -16,6 +16,8 @@ import 'egg-jsonp';
 import 'egg-view';
 import 'egg-sequelize';
 import 'egg-helper';
+import 'egg-jwt';
+import 'egg-cors';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -33,5 +35,7 @@ declare module 'egg' {
     view?: EggPluginItem;
     sequelize?: EggPluginItem;
     helper?: EggPluginItem;
+    jwt?: EggPluginItem;
+    cors?: EggPluginItem;
   }
 }

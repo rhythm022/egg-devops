@@ -10,6 +10,14 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-helper',
   },
+  jwt: {
+    enable: true,
+    package: "egg-jwt",
+  },
+  cors: {
+    enable: true,
+    package: "egg-cors",
+  },
   // nunjucks: {
   //   enable: true,
   //   package: 'egg-view-nunjucks',

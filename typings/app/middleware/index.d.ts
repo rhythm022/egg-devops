@@ -3,9 +3,11 @@
 
 import 'egg';
 import ExportErrorHandler from '../../../app/middleware/error_handler';
+import ExportJwtAuth from '../../../app/middleware/jwt_auth';
 
 declare module 'egg' {
   interface IMiddleware {
     errorHandler: typeof ExportErrorHandler;
+    jwtAuth: typeof ExportJwtAuth;
   }
 }
