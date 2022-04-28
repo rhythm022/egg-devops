@@ -4,7 +4,7 @@ import { EggShell } from 'egg-shell-decorators';
 //   const { controller, router } = app;
 
 //   router.get('/', controller.home.index);
-//   // router.get('/:name', controller.home.index); 
+//   // router.get('/:name', controller.home.index);
 // };
 
 

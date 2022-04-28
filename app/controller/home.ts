@@ -1,4 +1,4 @@
-import  BaseController from './base';
+import BaseController from './base';
 import { Get, Prefix } from 'egg-shell-decorators';
 
 @Prefix('/home')

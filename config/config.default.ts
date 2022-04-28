@@ -8,7 +8,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1650716631986_5621';
 
   // add your egg config in here
-  config.middleware = ["jwtAuth",'errorHandler'];
+  config.middleware = [ 'jwtAuth', 'errorHandler' ];
 
   // add your special config in here
   const bizConfig = {
@@ -16,14 +16,14 @@ export default (appInfo: EggAppInfo) => {
   };
 
   config.sequelize = {
-    database: "devops_dev",
-    delegate: "model", // load all models to app.model and ctx.model
-    baseDir: "model", // load models from `app/model/*.js`
-    dialect: "mysql",
-    host: "192.168.56.120",
+    database: 'devops_dev',
+    delegate: 'model', // load all models to app.model and ctx.model
+    baseDir: 'model', // load models from `app/model/*.js`
+    dialect: 'mysql',
+    host: '192.168.56.120',
     port: 3306,
-    username: "sam",
-    password: "111111",
+    username: 'sam',
+    password: '111111',
   };
 
   config.security = {
@@ -33,12 +33,12 @@ export default (appInfo: EggAppInfo) => {
     // domainWhiteList: '*'  // 白名单
   };
   config.cors = {
-    origin: (ctx) => ctx.get("origin"),
+    origin: ctx => ctx.get('origin'),
     credentials: true,
-    allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH",
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
   config.jwt = {
-    secret: "123456", // 自定义 token 的加密条件字符串
+    secret: '123456', // 自定义 token 的加密条件字符串
   };
 
   config.jwtAuth = {};

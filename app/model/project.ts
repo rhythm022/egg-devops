@@ -1,10 +1,10 @@
-"use strict";
 
-module.exports = (app) => {
+
+module.exports = app => {
   const { STRING, INTEGER, UUID, UUIDV4, DATE } = app.Sequelize;
 
   const Project = app.model.define(
-    "project",
+    'project',
     {
       id: {
         type: UUID,
@@ -25,12 +25,12 @@ module.exports = (app) => {
         type: STRING(1000),
         primaryKey: true,
         set(val, name) {
-          const vals = val && val.length > 0 ? val.join(",") : "";
+          const vals = val && val.length > 0 ? val.join(',') : '';
           (this as any).setDataValue(name, vals);
         },
         get(val) {
           const value = (this as any).getDataValue(val);
-          return value ? value.split(",") : [];
+          return value ? value.split(',') : [];
         },
       },
       namespace: STRING(30),
@@ -56,7 +56,7 @@ module.exports = (app) => {
     },
     {
       freezeTableName: true,
-    }
+    },
   );
   return Project;
 };

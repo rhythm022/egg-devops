@@ -5,12 +5,12 @@
  * @LastEditTime: 2020-08-16 11:36:40
  * @Description:
  */
-import { MAIL_CONFIG } from "../../config/default.config";
+import { MAIL_CONFIG } from '../../config/default.config';
 
-const marked = require("marked"); // marked 转换
-const nodemailer = require("nodemailer"); // 发送邮件
-const nunjucks = require("nunjucks"); // 模板引擎
-const path = require("path");
+const marked = require('marked'); // marked 转换
+const nodemailer = require('nodemailer'); // 发送邮件
+const nunjucks = require('nunjucks'); // 模板引擎
+const path = require('path');
 
 // 邮箱配置初始化
 const transporter = nodemailer.createTransport({
@@ -23,9 +23,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const htmlModel = (params) => {
-  const { storyMail, exitInfo, summitUser, iterationMail } = params
-  const html = nunjucks.render(path.join(__dirname, "./emailTpl/email.njk"), {
+const htmlModel = params => {
+  const { storyMail, exitInfo, summitUser, iterationMail } = params;
+  const html = nunjucks.render(path.join(__dirname, './emailTpl/email.njk'), {
     storyMail,
     exitInfo,
     summitUser,
@@ -35,7 +35,7 @@ const htmlModel = (params) => {
 };
 
 const htmlPassModel = ({ storyMail, testInfo, testUser, iterationMail }) => {
-  const html = nunjucks.render(path.join(__dirname, "./emailTpl/pass.njk"), {
+  const html = nunjucks.render(path.join(__dirname, './emailTpl/pass.njk'), {
     storyMail,
     testInfo,
     testUser,
@@ -50,7 +50,7 @@ const htmlRepulseModel = ({
   repulseInfo,
   iterationMail,
 }) => {
-  const html = nunjucks.render(path.join(__dirname, "./emailTpl/repulse.njk"), {
+  const html = nunjucks.render(path.join(__dirname, './emailTpl/repulse.njk'), {
     storyMail,
     repulseUser,
     repulseInfo,
@@ -84,7 +84,7 @@ interface mailInterface {
   attachments?: any;
   storyMail?: any;
   exitInfo?: any;
-  summitUser?: String;
+  summitUser?: string;
   iterationMail?: any;
 }
 
@@ -100,7 +100,7 @@ const sendMail = async (mailOptions: mailInterface) => {
     summitUser,
     iterationMail,
   } = mailOptions;
-  Object.keys(exitInfo).forEach((key) => {
+  Object.keys(exitInfo).forEach(key => {
     exitInfo[key] = marked(exitInfo[key]);
   });
   const html = htmlModel({ storyMail, exitInfo, summitUser, iterationMail });

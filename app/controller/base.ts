@@ -6,7 +6,7 @@
  * @Description: 基础类 Controller
  */
 
-import { Controller } from "egg";
+import { Controller } from 'egg';
 // import HttpExceptions from "../exceptions/http_exceptions";
 
 export default class BaseController extends Controller {
@@ -37,12 +37,12 @@ export default class BaseController extends Controller {
    * @author: Cookie
    * @description: 根据业务返回不同的错误 code，提供给前端做业务判断处理
    */
-  error({ msg = "服务器异常", code = 1, httpCode = 400 }) {
-    this.ctx.body = 
-    /*throw new HttpExceptions*/({
-      code,
-      httpCode,
-      msg,
-    });
+  error({ msg = '服务器异常', code = 1, httpCode = 400 }) {
+    this.ctx.body =
+    /* throw new HttpExceptions*/({
+        code,
+        httpCode,
+        msg,
+      });
   }
 }

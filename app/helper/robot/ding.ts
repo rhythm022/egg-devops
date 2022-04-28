@@ -6,12 +6,12 @@
  * @Description: request 模块
  */
 
-const crypto = require("crypto");
+const crypto = require('crypto');
 
-import { DING_SEND_URL, DING_SECRET } from '../../config/default.config'
+import { DING_SEND_URL, DING_SECRET } from '../../config/default.config';
 
 
-export default (app) => {
+export default app => {
   return {
     /**
      * @author: Cookie
@@ -20,21 +20,21 @@ export default (app) => {
     async send(content) {
       const timestamp = Date.now();
       const str = crypto
-        .createHmac("sha256", DING_SECRET)
-        .update(timestamp + "\n" + DING_SECRET)
+        .createHmac('sha256', DING_SECRET)
+        .update(timestamp + '\n' + DING_SECRET)
         .digest()
-        .toString("base64", "UTF-8");
+        .toString('base64', 'UTF-8');
 
       try {
         const { res } = await app.curl(
           `${DING_SEND_URL}&timestamp=${timestamp}&sign=${encodeURIComponent(str)}`,
           {
             headers: {
-              "Content-Type": "application/json; charset=utf-8",
+              'Content-Type': 'application/json; charset=utf-8',
             },
-            method: "POST",
+            method: 'POST',
             data: JSON.stringify(content),
-          }
+          },
         );
         return res;
       } catch (error) {
@@ -44,7 +44,7 @@ export default (app) => {
     text({ content = {}, at }) {
       at = at || {};
       this.send({
-        msgtype: "text",
+        msgtype: 'text',
         text: {
           content,
         },

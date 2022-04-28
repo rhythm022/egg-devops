@@ -1,4 +1,4 @@
-import { Service } from "egg";
+import { Service } from 'egg';
 export default class Project extends Service {
   /**
    * @description: 根据 gitLab api 获取项目 list，数据落库
@@ -9,14 +9,14 @@ export default class Project extends Service {
       pageSize,
       pageNum,
       access_token,
-      userId
+      userId,
     });
     const selfProjectList: any = [];
     const opt: number[] = [];
 
-    if (!projectList) return []
+    if (!projectList) return [];
 
-    projectList.forEach((project) => {
+    projectList.forEach(project => {
       if (project) {
         selfProjectList.push({
           projectSourceId: project.id,
@@ -37,13 +37,13 @@ export default class Project extends Service {
     if (selfProjectList.length > 0) {
       await ctx.model.Project.bulkCreate(selfProjectList, {
         updateOnDuplicate: [
-          "projectGitDesc",
-          "namespace",
-          "projectUrl",
-          "projectGitName",
-          "lastActivityAt",
-          "logo",
-          "nameWithNamespace",
+          'projectGitDesc',
+          'namespace',
+          'projectUrl',
+          'projectGitName',
+          'lastActivityAt',
+          'logo',
+          'nameWithNamespace',
         ],
       });
     }
@@ -64,13 +64,13 @@ export default class Project extends Service {
     const { ctx } = this;
     const self_project = await ctx.model.Project.findOne({
       where: {
-        id: projectId
+        id: projectId,
       },
       raw: true,
     });
     const project = await ctx.helper.api.gitLab.project.getProject({
       id: self_project.projectSourceId,
-      access_token
+      access_token,
     });
     return { ...self_project, ...project };
   }

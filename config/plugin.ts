@@ -4,7 +4,7 @@ const plugin: EggPlugin = {
   static: true,
   sequelize: {
     enable: true,
-    package: "egg-sequelize",
+    package: 'egg-sequelize',
   },
   helper: {
     enable: true,
@@ -12,11 +12,11 @@ const plugin: EggPlugin = {
   },
   jwt: {
     enable: true,
-    package: "egg-jwt",
+    package: 'egg-jwt',
   },
   cors: {
     enable: true,
-    package: "egg-cors",
+    package: 'egg-cors',
   },
   // nunjucks: {
   //   enable: true,

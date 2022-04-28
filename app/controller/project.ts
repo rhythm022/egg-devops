@@ -1,12 +1,12 @@
-import  BaseController from './base';
-import { Get, Prefix } from "egg-shell-decorators";
+import BaseController from './base';
+import { Get, Prefix } from 'egg-shell-decorators';
 
-@Prefix("project")
+@Prefix('project')
 export default class ProjectController extends BaseController {
   /**
    * @description: 获取 gitLab 对应自身的项目列表
    */
-  @Get("/getList")
+  @Get('/getList')
   public async getProjectList({ request: { query } }) {
     const { ctx } = this;
     const { access_token } = this.user;
@@ -16,7 +16,7 @@ export default class ProjectController extends BaseController {
       pageSize,
       pageNum,
       access_token,
-      userId
+      userId,
     });
     this.success(projectList);
   }
@@ -24,15 +24,15 @@ export default class ProjectController extends BaseController {
   /**
    * @description: 获取 gitLab 单个项目
    */
-  @Get("/get")
+  @Get('/get')
   public async getProject({ request: { query } }) {
     const { ctx } = this;
     const { projectId } = query;
-    console.log('this.user==>', this)
+    console.log('this.user==>', this);
     const { access_token } = this.user;
     const project = await ctx.service.project.getProject({
       projectId,
-      access_token
+      access_token,
     });
 
     this.success(project);

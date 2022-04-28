@@ -5,21 +5,21 @@
  * @LastEditTime: 2020-08-05 17:23:13
  * @Description: gitLab 项目模块 api
  */
-import AJAX from "../../utils/http";
+import AJAX from '../../utils/http';
 
-module.exports = (app) => {
+module.exports = app => {
   /**
    * @author: Cookie
    * @description: 获取工程列表
    */
   const getProjectList = async ({ pageSize, pageNum, access_token }) => {
-    const { data : projectList } = await AJAX(app).methodV({
-      url: "/projects",
-      method: "GET",
+    const { data: projectList } = await AJAX(app).methodV({
+      url: '/projects',
+      method: 'GET',
       query: {
         per_page: pageSize,
         page: pageNum,
-        access_token
+        access_token,
       },
     });
     return { projectList };
@@ -32,11 +32,11 @@ module.exports = (app) => {
   const getProjectByUser = async ({ pageSize, pageNum, access_token, userId }) => {
     const { data: projectList } = await AJAX(app).methodV({
       url: `/users/${userId}/projects`,
-      method: "GET",
+      method: 'GET',
       query: {
         per_page: pageSize,
         page: pageNum,
-        access_token
+        access_token,
       },
     });
     return { projectList };
@@ -49,8 +49,8 @@ module.exports = (app) => {
   const getProject = async ({ id, access_token }) => {
     const project = await AJAX(app).methodV({
       url: `/projects/${id}`,
-      method: "GET",
-      query: { access_token }
+      method: 'GET',
+      query: { access_token },
     });
     return project;
   };
@@ -61,8 +61,8 @@ module.exports = (app) => {
    */
   const createProjects = async ({ gitParams }) => {
     const status = await AJAX(app).methodV({
-      url: "/projects",
-      method: "POST",
+      url: '/projects',
+      method: 'POST',
       params: {
         ...gitParams,
       },
@@ -78,7 +78,7 @@ module.exports = (app) => {
     const url = `/projects/${projectId}/protected_branches/master`;
     const status = await AJAX(app).methodV({
       url,
-      method: "DELETE",
+      method: 'DELETE',
     });
     return status;
   };
@@ -91,9 +91,9 @@ module.exports = (app) => {
     const url = `/projects/${projectId}/protected_branches`;
     const status = await AJAX(app).methodV({
       url,
-      method: "POST",
+      method: 'POST',
       params: {
-        name: "master",
+        name: 'master',
         push_access_level: 0,
         merge_access_level: 40,
       },
