@@ -1,5 +1,12 @@
-import 'egg';
+import "egg";
 
-declare module 'egg' {
+declare module "egg" {
+  interface Application { }
+  interface CustomController {
+    nsp: any;
+  }
 
+  interface EggSocketNameSpace {
+    emit: any
+  }
 }

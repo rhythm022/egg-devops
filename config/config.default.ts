@@ -43,6 +43,21 @@ export default (appInfo: EggAppInfo) => {
 
   config.jwtAuth = {};
 
+
+  // socketio 配置
+  config.io = {
+    init: {}, // passed to engine.io
+    namespace: {
+      '/': {
+        connectionMiddleware: [],
+        packetMiddleware: [],
+      },
+      '/example': {
+        connectionMiddleware: [],
+        packetMiddleware: [],
+      },
+    },
+  };
   // the return config will combines to EggAppConfig
   return {
     ...config,
