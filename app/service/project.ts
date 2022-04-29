@@ -64,11 +64,11 @@ export default class Project extends Service {
     const { ctx } = this;
     const self_project = await ctx.model.Project.findOne({
       where: {
-        id: projectId,
+        projectSourceId: projectId,
       },
       raw: true,
     });
-    const project = await ctx.helper.api.gitLab.project.getProject({
+    const project = await ctx.helper.api.gitlab.project.getProject({
       id: self_project.projectSourceId,
       access_token,
     });
