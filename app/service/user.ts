@@ -1,5 +1,6 @@
 import { Service } from 'egg';
 import { CLIENT_ID, CLIENT_SECRET } from '../config/default.config';
+import { END_URL } from '../config/default.config';
 export default class User extends Service {
 
   public async getTokenByApplications({ code }) {
@@ -10,7 +11,7 @@ export default class User extends Service {
         client_id: CLIENT_ID,
         client_secret: CLIENT_SECRET,
         code,
-        redirect_uri: 'http://127.0.0.1:7001/user/getTokenByApp',
+        redirect_uri: END_URL + 'user/getTokenByApp',
       },
     });
 

@@ -1,11 +1,11 @@
-const excludeUrl = [ '/user/getTokenByApp' ]; // 请求白名单，过滤不需要校验的请求路径，例如登录、或其他不需要鉴权等接口。
+const excludeUrl = [ '/user/getUserToken', '/user/getTokenByApp' ]; // 请求白名单，过滤不需要校验的请求路径，例如登录、或其他不需要鉴权等接口。
 
 export default () => {
   const jwtAuth = async (ctx, next) => {
     if (excludeUrl.find(it => ctx.request.url.startsWith(it))) {
       return await next();
     }
-    const token = ctx.request.header.authorization;
+    const token = ctx.cookies.get('authorization') || ctx.request.header.authorization;
     if (token) {
       try {
         // 解码token

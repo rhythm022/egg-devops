@@ -10,10 +10,11 @@
 /**
  * @description: 这里的配置内容需要自己替换成本地的
  */
-
-// 反向代理git url
+const END_URL = 'http://127.0.0.1:7001/';
+const FE_URL = 'http://localhost:8000/';
+// 反向代理gitlab url
 const GIT_URL = 'http://192.168.56.119/';
-
+const JENKINS_URL = 'http://sam:11a96af9c29d5c85df6032d8413018f6b6@localhost:8080';
 // app 授权客户端id 与 秘钥
 const CLIENT_SECRET = 'ee2edaa629668cca5e650aa73990c0608601dc0886ed3aca7c161c2f2f80f92e';
 const CLIENT_ID = '137b236596d6001528762603d17bc782999120a7070333478683abc4522048ed';
@@ -35,6 +36,9 @@ const MAIL_CONFIG = {
 
 
 export {
+  END_URL,
+  FE_URL,
+  JENKINS_URL,
   GIT_URL,
   CLIENT_ID,
   CLIENT_SECRET,

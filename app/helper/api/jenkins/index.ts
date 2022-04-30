@@ -7,7 +7,7 @@
  */
 
 import * as jenkins from 'jenkins';
-
+import { JENKINS_URL } from '../../../config/default.config';
 /**
  * Jenkins连接
  * @param type
@@ -17,7 +17,7 @@ const getJenkins = function(
 ) {
   const jenkinsConfig = {
     h5: {
-      baseUrl: 'http://sam:11a96af9c29d5c85df6032d8413018f6b6@localhost:8080',
+      baseUrl: JENKINS_URL,
       crumbIssuer: true,
     },
   };

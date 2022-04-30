@@ -1,6 +1,6 @@
 import BaseController from './base';
 import { Get, Prefix } from 'egg-shell-decorators';
-
+import { FE_URL } from '../config/default.config';
 @Prefix('user')
 export default class UserController extends BaseController {
   @Get('/getTokenByApp')
@@ -33,7 +33,32 @@ export default class UserController extends BaseController {
       app.config.jwt.secret,
     );
     ctx.set({ authorization: token }); // 设置 headers
-    this.success({ userInfo, token });
+    ctx.set({ 'Access-Control-Expose-Headers': 'authorization' });
+    ctx.cookies.set('authorization', token, {
+      maxAge: 1000 * 3600 * 24,
+      httpOnly: true,
+      // domain: '.cookieboty.com',
+    });
+    // ctx.redirect(FE_URL);
+
+    this.success({ userInfo, token, FE_URL });
+
+  }
+
+  /**
+   * @author: Cookie
+   * @description: 根据 gitLab 用户密码获取 access_token
+   */
+  @Get('/getUserInfo')
+  public async getUserInfo() {
+    const { ctx } = this;
+    const { access_token } = this.user;
+    // gitLab 获取用户信息
+    const userInfo = await ctx.service.user.getUserInfo({
+      accessToken: access_token,
+    });
+
+    this.success(userInfo);
   }
 }
 
