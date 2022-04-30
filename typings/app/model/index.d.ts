@@ -2,11 +2,13 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
+import ExportBranch from '../../../app/model/branch';
 import ExportProject from '../../../app/model/project';
 import ExportUser from '../../../app/model/user';
 
 declare module 'egg' {
   interface IModel {
+    Branch: ReturnType<typeof ExportBranch>;
     Project: ReturnType<typeof ExportProject>;
     User: ReturnType<typeof ExportUser>;
   }

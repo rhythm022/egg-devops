@@ -64,7 +64,7 @@ export default class Project extends Service {
     const { ctx } = this;
     const self_project = await ctx.model.Project.findOne({
       where: {
-        projectSourceId: projectId,
+        id: projectId,
       },
       raw: true,
     });

@@ -28,13 +28,13 @@ export default class ProjectController extends BaseController {
   public async getProject({ request: { query } }) {
     const { ctx } = this;
     const { projectId } = query;
-    console.log('this.user==>', this);
+    // console.log('this.user==>', this);
     const { access_token } = this.user;
     const project = await ctx.service.project.getProject({
       projectId,
       access_token,
     });
-
+    console.log(project);
     this.success(project);
   }
 }

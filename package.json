@@ -19,7 +19,11 @@
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
     "lint": "eslint . --ext .ts --fix",
-    "clean": "ets clean"
+    "clean": "ets clean",
+    "db-table-gen":"npx sequelize migration:generate --name=init-xxx",
+    "db-table-update":"npx sequelize db:migrate",
+    "db-table-update-undo":"npx sequelize db:migrate:undo"
+
   },
   "dependencies": {
     "@types/jenkins": "^0.23.3",
