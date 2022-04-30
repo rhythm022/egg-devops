@@ -38,7 +38,7 @@ export default class Branch extends Service {
     branchList.length > 0 &&
       (await ctx.model.Branch.bulkCreate(branchList, {
         ignoreDuplicates: true,
-        updateOnDuplicate: [ 'branchGitName', 'project_id', 'project_source_id' ],
+        updateOnDuplicate: [ 'commit' ],
       }));
 
     const local = await ctx.model.Branch.findAll({
