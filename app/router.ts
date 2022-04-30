@@ -14,4 +14,5 @@ export default (app: Application) => {
   EggShell(app);
 
   io.of('/').route('server', io.controller.nsp.ping);
+  io.of('/').route('creatJob', io.controller.nsp.creatJob);// ??
 };
